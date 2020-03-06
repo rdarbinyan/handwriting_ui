@@ -4,10 +4,12 @@ import './index.css';
 import {createElements} from "./createElements";
 import {initDrawing} from "./initDrawing";
 
+document.getElementById("root").setAttribute('class', 'loader');
 
 (async function() {
     const encoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_learning/master/output/encoder.json/model.json");
     const decoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_learning/master/output/decoder.json/model.json");
+    document.getElementById("root").setAttribute('class', '');
 
     const {clearButtonEl, canvasEl, rangeEl, rangeValueEl} = createElements();
     const {tempCanvasEl, clearCanvas, drawOnCanvas} = initDrawing(canvasEl, rangeEl);
