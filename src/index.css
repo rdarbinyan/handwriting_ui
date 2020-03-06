@@ -1,0 +1,113 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #e1e1e1;
+}
+
+#root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.canvas {
+    border: 3px #03A9F4 solid;
+    border-radius: 20px;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.drawingArea {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #03A9F4;
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+button:active {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+input[type="range"] {
+    width: 200px;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    border-radius: 15px;
+    background-color: #03A9F4;
+    height: 10px;
+}
+
+input[type="range"]:hover {
+    -webkit-box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    background: #03A9F4;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    -webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.canvasControls {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resultBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.outputImg {
+    margin: 5px 0;
+    border-radius: 10px;
+    border: #03A9F4 solid;
+    background-color: black;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.inputImg {
+    border-radius: 5px;
+    border: #03A9F4 solid;
+    background-color: black;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button:focus {outline:0;}
+input:focus {outline:0;}

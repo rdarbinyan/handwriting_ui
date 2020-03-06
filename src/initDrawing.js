@@ -1,6 +1,6 @@
-import {CANVAS_BG_COLOR, CANVAS_HEIGHT, CANVAS_LINE_WIDTH, CANVAS_WIDTH, CROP} from "./constants";
+import {CANVAS_BG_COLOR, CANVAS_HEIGHT, CANVAS_WIDTH, CROP} from "./constants";
 
-export const initDrawing = canvasEl => {
+export const initDrawing = (canvasEl, rangeEl) => {
     let [clickX, clickY, clickD] = [[], [], []];
     let drawing;
     let ctx = canvasEl.getContext("2d");
@@ -16,6 +16,7 @@ export const initDrawing = canvasEl => {
     };
 
     const drawOnCanvas = () =>  {
+        ctx.lineWidth = rangeEl.valueAsNumber;
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         for (let i = 0; i < clickX.length; ++i) {
@@ -34,13 +35,14 @@ export const initDrawing = canvasEl => {
     };
 
     const fillInputImage = () => {
+        const lineWidth = rangeEl.valueAsNumber;
         let minX, maxX, minY, maxY;
         if(CROP && clickX.length) {
-            [minX, maxX] = [Math.min(...clickX) - 3 * CANVAS_LINE_WIDTH, Math.max(...clickX) + 3 * CANVAS_LINE_WIDTH];
-            [minY, maxY] = [Math.min(...clickY) - CANVAS_LINE_WIDTH, Math.max(...clickY) + CANVAS_LINE_WIDTH];
+            [minX, maxX] = [Math.min(...clickX) - 3 * lineWidth, Math.max(...clickX) + 3 * lineWidth];
+            [minY, maxY] = [Math.min(...clickY) - lineWidth, Math.max(...clickY) + lineWidth];
         } else {
-            [minX, maxX] = [0 - CANVAS_LINE_WIDTH, CANVAS_WIDTH + CANVAS_LINE_WIDTH];
-            [minY, maxY] = [0 - CANVAS_LINE_WIDTH, CANVAS_HEIGHT + CANVAS_LINE_WIDTH];
+            [minX, maxX] = [0 - lineWidth, CANVAS_WIDTH + lineWidth];
+            [minY, maxY] = [0 - lineWidth, CANVAS_HEIGHT + lineWidth];
         }
 
         tempCanvasEl.width  = maxX - minX;
@@ -53,7 +55,7 @@ export const initDrawing = canvasEl => {
         inputImgEl.src = tempCanvasEl.toDataURL();
 
         // show the image
-        document.getElementById("result_box").style.display = "block";
+        document.getElementById("result_box").style.display = "flex";
 
         return tempCanvasEl;
     };
@@ -89,5 +91,5 @@ export const initDrawing = canvasEl => {
         drawing = false;
     });
 
-    return {tempCanvasEl, clearCanvas}
+    return {tempCanvasEl, clearCanvas, drawOnCanvas}
 };

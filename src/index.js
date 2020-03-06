@@ -1,15 +1,21 @@
 import * as tf from '@tensorflow/tfjs';
+import './index.css';
 
 import {createElements} from "./createElements";
 import {initDrawing} from "./initDrawing";
 
-const {clearButtonEl, canvasEl} = createElements();
 
 (async function() {
     const encoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_learning/master/output/encoder.json/model.json");
     const decoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_learning/master/output/decoder.json/model.json");
 
-    const {tempCanvasEl, clearCanvas} = initDrawing(canvasEl);
+    const {clearButtonEl, canvasEl, rangeEl, rangeValueEl} = createElements();
+    const {tempCanvasEl, clearCanvas, drawOnCanvas} = initDrawing(canvasEl, rangeEl);
+
+    rangeEl.oninput = () => {
+        rangeValueEl.innerText = rangeEl.value;
+        drawOnCanvas();
+    };
     clearButtonEl.addEventListener('click', clearCanvas);
 
     const preprocessCanvas = async (inputCanvas) => {
@@ -29,7 +35,7 @@ const {clearButtonEl, canvasEl} = createElements();
     };
 
     async function calculate() {
-        const imgBoxes = document.getElementsByClassName("output-img");
+        const imgBoxes = document.getElementsByClassName("outputImg");
         let tensor = await preprocessCanvas(tempCanvasEl);
         for (let i = 0; i < imgBoxes.length; ++i) {
             const num = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -45,6 +51,6 @@ const {clearButtonEl, canvasEl} = createElements();
         }
     }
 
-    setInterval(calculate, 500);
+    setInterval(calculate, 1000);
 })();
 
