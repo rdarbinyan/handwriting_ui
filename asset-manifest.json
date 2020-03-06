@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/handwriting_ui/static/css/main.87fb6b14.chunk.css",
-    "main.js": "/handwriting_ui/static/js/main.2d020384.chunk.js",
-    "main.js.map": "/handwriting_ui/static/js/main.2d020384.chunk.js.map",
+    "main.css": "/handwriting_ui/static/css/main.21cd7d3f.chunk.css",
+    "main.js": "/handwriting_ui/static/js/main.f96e2491.chunk.js",
+    "main.js.map": "/handwriting_ui/static/js/main.f96e2491.chunk.js.map",
     "runtime-main.js": "/handwriting_ui/static/js/runtime-main.9563bcb3.js",
     "runtime-main.js.map": "/handwriting_ui/static/js/runtime-main.9563bcb3.js.map",
     "static/js/2.88fabb73.chunk.js": "/handwriting_ui/static/js/2.88fabb73.chunk.js",
     "static/js/2.88fabb73.chunk.js.map": "/handwriting_ui/static/js/2.88fabb73.chunk.js.map",
     "index.html": "/handwriting_ui/index.html",
-    "precache-manifest.5a32e1c742fcfc141cffaa35992d8455.js": "/handwriting_ui/precache-manifest.5a32e1c742fcfc141cffaa35992d8455.js",
+    "precache-manifest.8ce7c24a85c6701765d427c8429d1f1b.js": "/handwriting_ui/precache-manifest.8ce7c24a85c6701765d427c8429d1f1b.js",
     "service-worker.js": "/handwriting_ui/service-worker.js",
-    "static/css/main.87fb6b14.chunk.css.map": "/handwriting_ui/static/css/main.87fb6b14.chunk.css.map",
+    "static/css/main.21cd7d3f.chunk.css.map": "/handwriting_ui/static/css/main.21cd7d3f.chunk.css.map",
     "static/js/2.88fabb73.chunk.js.LICENSE.txt": "/handwriting_ui/static/js/2.88fabb73.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9563bcb3.js",
     "static/js/2.88fabb73.chunk.js",
-    "static/css/main.87fb6b14.chunk.css",
-    "static/js/main.2d020384.chunk.js"
+    "static/css/main.21cd7d3f.chunk.css",
+    "static/js/main.f96e2491.chunk.js"
   ]
 }
