@@ -47,8 +47,9 @@ document.getElementById("root").setAttribute('class', 'loader');
             await tf.browser.toPixels(result, tempCanvas);
             imgBoxes[i].src = tempCanvas.toDataURL()
         }
+        setTimeout(calculate, 1000)
     }
 
-    setInterval(calculate, 1000);
+    await calculate();
 })();
 
