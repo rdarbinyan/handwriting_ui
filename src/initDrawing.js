@@ -66,9 +66,15 @@ export const initDrawing = (canvasEl, rangeEl) => {
         fillInputImage();
     };
 
+
     canvasEl.addEventListener('mousedown', e => {
         const [mouseX, mouseY] = [e.pageX - canvasEl.offsetLeft, e.pageY - canvasEl.offsetTop];
-
+        if(!clickX.length) {
+            const rightComponentEl = document.getElementById('right_component');
+            const descriptionEl = document.getElementById('description');
+            rightComponentEl.setAttribute('style', '');
+            descriptionEl.setAttribute('style', 'display:none');
+        }
         drawing = true;
         addUserGesture(mouseX, mouseY);
         drawOnCanvas();
@@ -90,6 +96,8 @@ export const initDrawing = (canvasEl, rangeEl) => {
     canvasEl.addEventListener('mouseleave', e => {
         drawing = false;
     });
+
+    rangeEl.oninput = drawOnCanvas;
 
     return {tempCanvasEl, clearCanvas, drawOnCanvas}
 };

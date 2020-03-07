@@ -11,13 +11,9 @@ document.getElementById("root").setAttribute('class', 'loader');
     const decoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_learning/master/output/decoder.json/model.json");
     document.getElementById("root").setAttribute('class', '');
 
-    const {clearButtonEl, canvasEl, rangeEl, rangeValueEl} = createElements();
-    const {tempCanvasEl, clearCanvas, drawOnCanvas} = initDrawing(canvasEl, rangeEl);
+    const {clearButtonEl, canvasEl, rangeEl} = createElements();
+    const {tempCanvasEl, clearCanvas} = initDrawing(canvasEl, rangeEl);
 
-    rangeEl.oninput = () => {
-        rangeValueEl.innerText = rangeEl.value;
-        drawOnCanvas();
-    };
     clearButtonEl.addEventListener('click', clearCanvas);
 
     const preprocessCanvas = async (inputCanvas) => {

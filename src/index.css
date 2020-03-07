@@ -6,14 +6,14 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: cursive;
 }
 
 #root {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    height: 100%;
+    align-items: center;
     width: 100%;
 }
 
@@ -78,16 +78,55 @@ input[type="range"]::-webkit-slider-thumb:hover {
     box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.titleContainer {
+    height: 50px;
+    margin: 10px 15px 0 15px;
+    display: flex;
+    align-items: center;
+}
 
 
 .canvasControls {
     display: flex;
     flex-direction: row;
-    margin: 10px;
+    margin-top: 10px;
     justify-content: space-around;
     align-items: center;
 }
 
+.rightComponent {
+    display: flex;
+    align-items: center;
+    height: 784px;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    height: 784px;
+    width: 496px;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
+.description > div {
+    border-color: #03A9F4;
+    border-width: 3px 3px 3px 0;
+    border-style: solid;
+    border-radius: 0 20px 20px 0;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 15px 15px 15px 25px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.description h2 {
+    margin-top: 0;
+}
 .resultBox {
     display: flex;
     flex-direction: column;
@@ -123,6 +162,20 @@ input:focus {outline:0;}
     height: 500px !important;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
+}
+
+
+.rangeContainer {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a {
+    color: #3980f4;
+    text-decoration: none;
 }
 
 /* Safari */

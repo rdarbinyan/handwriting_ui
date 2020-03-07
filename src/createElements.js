@@ -6,6 +6,9 @@ const createCanvasControls = (parentEl) => {
     const canvasControlsEl = document.createElement('div');
     canvasControlsEl.setAttribute("class", `canvasControls`);
 
+    const rangeContainerEl = document.createElement('div');
+    rangeContainerEl.setAttribute('class', 'rangeContainer');
+
     const rangeEl = document.createElement('input');
     rangeEl.setAttribute('id', 'range');
     rangeEl.setAttribute('type', 'range');
@@ -13,12 +16,13 @@ const createCanvasControls = (parentEl) => {
     rangeEl.setAttribute('max', `${CANVAS_LINE_WIDTH * 7}`);
     rangeEl.setAttribute('value', `${CANVAS_LINE_WIDTH * 4}`);
 
-    const rangeValueEl = document.createElement('p');
-    rangeValueEl.setAttribute('id', 'rangeValue');
-    rangeValueEl.innerText = rangeEl.value;
+    const rangeLabelEl = document.createElement('label');
+    rangeLabelEl.setAttribute('for', 'range');
+    rangeLabelEl.innerHTML = "Brush size";
 
-    canvasControlsEl.appendChild(rangeEl);
-    canvasControlsEl.appendChild(rangeValueEl);
+    rangeContainerEl.appendChild(rangeLabelEl);
+    rangeContainerEl.appendChild(rangeEl);
+    canvasControlsEl.appendChild(rangeContainerEl);
 
     const clearButtonEl = document.createElement('button');
     clearButtonEl.innerText = 'Clear Canvas';
@@ -26,12 +30,19 @@ const createCanvasControls = (parentEl) => {
 
     parentEl.appendChild(canvasControlsEl);
 
-    return {clearButtonEl, rangeEl, rangeValueEl};
+    return {clearButtonEl, rangeEl};
 };
 
 const createDrawingArea = () => {
     const drawingAreaEl = document.createElement('div');
     drawingAreaEl.setAttribute("class", `drawingArea`);
+
+    const titleContainerEl = document.createElement('div');
+    titleContainerEl.setAttribute("class", `titleContainer`);
+    const title = document.createElement('h2');
+    title.innerText = "Draw a digit";
+    titleContainerEl.appendChild(title);
+    drawingAreaEl.appendChild(titleContainerEl);
 
     const canvasEl = document.createElement("canvas");
     canvasEl.setAttribute("class", `canvas`);
@@ -46,13 +57,39 @@ const createDrawingArea = () => {
     drawingAreaEl.appendChild(canvasEl);
 
 
-    const {clearButtonEl, rangeEl, rangeValueEl} = createCanvasControls(drawingAreaEl);
-    rootEl.appendChild(drawingAreaEl)
-    return {canvasEl, clearButtonEl, rangeValueEl, rangeEl};
+    const {clearButtonEl, rangeEl} = createCanvasControls(drawingAreaEl);
+    rootEl.appendChild(drawingAreaEl);
+    return {canvasEl, clearButtonEl, rangeEl};
 };
 
-export const createElements = () => {
-    const {canvasEl, clearButtonEl, rangeValueEl, rangeEl} = createDrawingArea();
+const createRightComponent = () => {
+    const descriptionEl = document.createElement('div');
+    descriptionEl.setAttribute('id', 'description');
+    descriptionEl.setAttribute('class', 'description');
+    descriptionEl.innerHTML = `<div> <h2>Style Transfer for Handwritten Digits</h2>
+        This neural network transfers the "style" of a digit written in the black area to all other digits. 
+        There is no exact definition of "style", it is learned in an unsupervised manner.
+        <br/> <br/>
+        The idea is the following. An encoder learns to map the image <b>x</b> into a representation <b>z</b> 
+        which has all information about the image <i>except</i> its label: the digit <b>y</b>. 
+        Then, a decoder takes both <b>z</b> and <b>y</b> and reconstructs the original image. If <b>z</b> 
+        has no information about <b>y</b>, and if <b>z</b> and <b>y</b> together are enough to reconstruct <b>x</b>, 
+        we can assume that <b>z</b> contains information about the "style" of the image. When we have such encoder 
+        and decoder, then we can take <b>z</b> from one image and give a different <b>y</b> to see how other digits look like with this "style".
+        <br/> <br/>
+        
+        This is made possible by the method described in <a href="http://papers.nips.cc/paper/8122-invariant-representations-without-adversarial-training">
+        "Invariant Representations without Adversarial Training"</a> by Daniel Moyer, Shuyang Gao, Rob Brekelmans, Aram Galstyan and Greg Ver Steeg. 
+        In short, the system is a variational autoencoder with an additional term in the loss function which minimizes an approximation of the mutual 
+        information between <b>z</b> and <b>y</b>. We have <a href="https://github.com/rdarbinyan/handwriting_learning">re-implemented the algorithm in 
+        Keras</a>, trained the model on MNIST, and brought the weights to tensorflow.js.</div>`;
+
+    rootEl.appendChild(descriptionEl);
+
+    const rightComponentEl = document.createElement('div');
+    rightComponentEl.setAttribute('id', 'right_component');
+    rightComponentEl.setAttribute('style', 'display:none');
+    rightComponentEl.setAttribute('class', 'rightComponent');
 
     const arrowEl = document.createElement('svg');
     arrowEl.innerHTML = `<svg width="200px" height="100px">
@@ -68,14 +105,14 @@ export const createElements = () => {
                                 <line x1="0" y1="50" x2="184" y2="50" style="stroke:#03A9F4;stroke-width:2" marker-end="url(#triangle)" />
                         </svg>`;
 
-    rootEl.appendChild(arrowEl)
+    rightComponentEl.appendChild(arrowEl);
 
     const inputImgEl = document.createElement('img');
     inputImgEl.setAttribute('id', 'input_img');
     inputImgEl.setAttribute('class', 'inputImg');
     inputImgEl.setAttribute('width', '28');
     inputImgEl.setAttribute('height', '28');
-    rootEl.appendChild(inputImgEl);
+    rightComponentEl.appendChild(inputImgEl);
 
     const arrowBunchEl = document.createElement('svg');
     arrowBunchEl.innerHTML = `<svg width="200px" height="720px">
@@ -100,7 +137,7 @@ export const createElements = () => {
                                 <line x1="0" y1="360" x2="190" y2="644" style="stroke:#03A9F4;stroke-width:2" marker-end="url(#triangle)"/>
                         </svg>`;
 
-    rootEl.appendChild(arrowBunchEl)
+    rightComponentEl.appendChild(arrowBunchEl);
 
 
     const resultBoxEl = document.createElement('div');
@@ -114,9 +151,14 @@ export const createElements = () => {
         resultBoxEl.appendChild(outputImgEl);
     }
 
-    rootEl.appendChild(resultBoxEl);
+    rightComponentEl.appendChild(resultBoxEl);
 
+    rootEl.appendChild(rightComponentEl);
+};
 
+export const createElements = () => {
+    const {canvasEl, clearButtonEl, rangeEl} = createDrawingArea();
+    createRightComponent();
 
-    return {clearButtonEl, canvasEl, rangeEl, rangeValueEl}
+    return {clearButtonEl, canvasEl, rangeEl}
 };
