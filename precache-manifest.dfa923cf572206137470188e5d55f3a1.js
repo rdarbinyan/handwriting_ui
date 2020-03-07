@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "135886944d4826cc047b0efef0e01943",
+    "revision": "25ebd2406a5942a626773eabc4b5ade0",
     "url": "/handwriting_ui/index.html"
   },
   {
-    "revision": "09eeeec334346cd21eda",
+    "revision": "aa801e4ff271570a6e5b",
     "url": "/handwriting_ui/static/css/main.b4383762.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/handwriting_ui/static/js/2.88fabb73.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "09eeeec334346cd21eda",
-    "url": "/handwriting_ui/static/js/main.b7c78cf0.chunk.js"
+    "revision": "aa801e4ff271570a6e5b",
+    "url": "/handwriting_ui/static/js/main.e08ab361.chunk.js"
   },
   {
     "revision": "596543078901d7b60d98",

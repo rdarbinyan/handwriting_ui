@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/handwriting_ui/precache-manifest.14df08c8cfd349774a6c359f756f0bb5.js"
+  "/handwriting_ui/precache-manifest.dfa923cf572206137470188e5d55f3a1.js"
 );
 
 self.addEventListener('message', (event) => {
