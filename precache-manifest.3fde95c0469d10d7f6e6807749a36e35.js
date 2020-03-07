@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ce80f29755c2c9da468030d3e4d599ba",
+    "revision": "926ce4203f10a76b7586628aebfbf766",
     "url": "/handwriting_ui/index.html"
   },
   {
