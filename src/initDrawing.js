@@ -66,14 +66,36 @@ export const initDrawing = (canvasEl, rangeEl) => {
         fillInputImage();
     };
 
+    const showRightComponent = () => {
+        const rightComponentEl = document.getElementById('right_component');
+        const descriptionEl = document.getElementById('description');
+        rightComponentEl.setAttribute('style', '');
+        descriptionEl.setAttribute('style', 'display:none');
+    };
+
 
     canvasEl.addEventListener('mousedown', e => {
         const [mouseX, mouseY] = [e.pageX - canvasEl.offsetLeft, e.pageY - canvasEl.offsetTop];
         if(!clickX.length) {
-            const rightComponentEl = document.getElementById('right_component');
-            const descriptionEl = document.getElementById('description');
-            rightComponentEl.setAttribute('style', '');
-            descriptionEl.setAttribute('style', 'display:none');
+            showRightComponent();
+        }
+        drawing = true;
+        addUserGesture(mouseX, mouseY);
+        drawOnCanvas();
+    });
+
+    canvasEl.addEventListener('touchstart', e => {
+        if (e.target === canvasEl) {
+            e.preventDefault();
+        }
+
+        const rect = canvasEl.getBoundingClientRect();
+        const touch = e.touches[0];
+
+        const [mouseX, mouseY] = [touch.clientX - rect.left, touch.clientY - rect.top];
+
+        if(!clickX.length) {
+            showRightComponent();
         }
         drawing = true;
         addUserGesture(mouseX, mouseY);
@@ -89,11 +111,42 @@ export const initDrawing = (canvasEl, rangeEl) => {
         }
     });
 
+    canvasEl.addEventListener('touchmove', e => {
+        if (e.target === canvasEl) {
+            e.preventDefault();
+        }
+
+        if (drawing) {
+            const rect = canvasEl.getBoundingClientRect();
+            const touch = e.touches[0];
+
+            const [mouseX, mouseY] = [touch.clientX - rect.left, touch.clientY - rect.top];
+
+            drawing = true;
+            addUserGesture(mouseX, mouseY);
+            drawOnCanvas();
+        }
+    });
+
     canvasEl.addEventListener('mouseup', e => {
         drawing = false;
     });
 
     canvasEl.addEventListener('mouseleave', e => {
+        drawing = false;
+    });
+
+    canvasEl.addEventListener('touchend', e => {
+        if (e.target === canvasEl) {
+            e.preventDefault();
+        }
+        drawing = false;
+    });
+
+    canvasEl.addEventListener('touchcancel', e => {
+        if (e.target === canvasEl) {
+            e.preventDefault();
+        }
         drawing = false;
     });
 
