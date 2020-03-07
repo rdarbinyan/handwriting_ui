@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/handwriting_ui/static/css/main.b4383762.chunk.css",
-    "main.js": "/handwriting_ui/static/js/main.9a6acfa3.chunk.js",
-    "main.js.map": "/handwriting_ui/static/js/main.9a6acfa3.chunk.js.map",
+    "main.js": "/handwriting_ui/static/js/main.e26c82e8.chunk.js",
+    "main.js.map": "/handwriting_ui/static/js/main.e26c82e8.chunk.js.map",
     "runtime-main.js": "/handwriting_ui/static/js/runtime-main.9563bcb3.js",
     "runtime-main.js.map": "/handwriting_ui/static/js/runtime-main.9563bcb3.js.map",
     "static/js/2.88fabb73.chunk.js": "/handwriting_ui/static/js/2.88fabb73.chunk.js",
     "static/js/2.88fabb73.chunk.js.map": "/handwriting_ui/static/js/2.88fabb73.chunk.js.map",
     "index.html": "/handwriting_ui/index.html",
-    "precache-manifest.3fde95c0469d10d7f6e6807749a36e35.js": "/handwriting_ui/precache-manifest.3fde95c0469d10d7f6e6807749a36e35.js",
+    "precache-manifest.710a75993cc3f31a9699cb41e20fa604.js": "/handwriting_ui/precache-manifest.710a75993cc3f31a9699cb41e20fa604.js",
     "service-worker.js": "/handwriting_ui/service-worker.js",
     "static/css/main.b4383762.chunk.css.map": "/handwriting_ui/static/css/main.b4383762.chunk.css.map",
     "static/js/2.88fabb73.chunk.js.LICENSE.txt": "/handwriting_ui/static/js/2.88fabb73.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9563bcb3.js",
     "static/js/2.88fabb73.chunk.js",
     "static/css/main.b4383762.chunk.css",
-    "static/js/main.9a6acfa3.chunk.js"
+    "static/js/main.e26c82e8.chunk.js"
   ]
 }
