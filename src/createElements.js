@@ -81,7 +81,10 @@ const createRightComponent = () => {
         This is made possible by the method described in <a href="http://papers.nips.cc/paper/8122-invariant-representations-without-adversarial-training">
         "Invariant Representations without Adversarial Training"</a> by Daniel Moyer, Shuyang Gao, Rob Brekelmans, Aram Galstyan and Greg Ver Steeg. 
         In short, the system is a variational autoencoder with an additional term in the loss function which minimizes an approximation of the mutual 
-        information between <b>z</b> and <b>y</b>. We have <a href="https://github.com/rdarbinyan/handwriting_learning">re-implemented the algorithm in 
+        information between <b>z</b> and <b>y</b>. Read more in <a href="https://dcmoyer.github.io/selfhosted/blag.html">Daniel Moyer's blogpost</a>. 
+        
+         <br/> <br/>
+        We have <a href="https://github.com/rdarbinyan/handwriting_learning">re-implemented the algorithm in 
         Keras</a>, trained the model on MNIST, and brought the weights to tensorflow.js.</div>`;
 
     rootEl.appendChild(descriptionEl);
