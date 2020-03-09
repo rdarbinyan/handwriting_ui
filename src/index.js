@@ -7,8 +7,11 @@ import {initDrawing} from "./initDrawing";
 document.getElementById("root").setAttribute('class', 'loader');
 
 (async function() {
-    const encoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_ui/master/models/encoder/model.json");
-    const decoder = await tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_ui/master/models/decoder/model.json");
+    const [encoder, decoder] = await Promise.all([
+        tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_ui/master/models/encoder/model.json"),
+        tf.loadLayersModel("https://raw.githubusercontent.com/rdarbinyan/handwriting_ui/master/models/decoder/model.json")
+    ]);
+
     document.getElementById("root").setAttribute('class', '');
 
     const {clearButtonEl, canvasEl, rangeEl} = createElements();
