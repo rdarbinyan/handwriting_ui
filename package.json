@@ -5,7 +5,7 @@
   "homepage": "https://rdarbinyan.github.io/handwriting_ui/",
   "dependencies": {
     "@tensorflow/tfjs": "^1.5.2",
-    "gh-pages": "^2.2.0",
+    "gh-pages": "^5.0.0",
     "react-scripts": "3.4.0"
   },
   "scripts": {
